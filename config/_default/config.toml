@@ -1,0 +1,31 @@
+
+baseURL = "https://epiclines.nz/"
+title = "EpicLines"
+languageCode = "en-nz"
+
+
+[params]
+  description = "EpicLines core site"
+  surfURL = "https://epiclines.nz/surf/"
+  motorhomeURL = "https://epiclines.nz/motorhome/"
+
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+  [[menu.main]]
+    name = "Surf"
+    url = "https://epiclines.nz/surf/"
+  [[menu.main]]
+    name = "Motorhomes"
+    url = "https://epiclines.nz/motorhome/"
+  [[menu.main]]
+    name = "Blog"
+    url = "/blog/"
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+  [[menu.main]]
+    name = "Contact"
+    url = "/contact/"
