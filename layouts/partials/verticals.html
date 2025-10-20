@@ -1,0 +1,37 @@
+
+
+
+
+
+
+
+{{ $data := .Site.Data }}
+
+{{ with $data.homepage.verticals }}
+  {{ if .enable }}
+    
+
+    <div class="verticals-top">
+      <div class="container verticals">
+        <div class="grid">
+          {{ range .options }}
+            {{ $configVarName := .link }}
+            {{ $url := index $.Site.Params $configVarName }}
+            <a href="{{ $url | safeURL }}">
+              <div class="panel {{ .title }}">
+                <div class="content">
+                  {{if .icon }}
+                  <span class="icon {{ .icon }}"></span>
+                  <img class="icon" src="{{ .icon | safeURL }}" alt="{{ .label }} Icon" />
+                  {{ end }}
+                  <h2 class="label">{{ .label }}</h2>
+                  <p class="sans">{{ .description | markdownify }}</p>
+                </div>
+              </div>
+            </a>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  {{ end }}
+{{ end }}

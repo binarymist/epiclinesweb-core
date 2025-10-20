@@ -1,0 +1,60 @@
+<div
+  class="clickable-card-container blog-card">
+    <a href="{{ .Permalink }}" class="stretched-link"></a>
+  {{ if .Params.image }}
+  <img id="thumb" alt="{{.Title}}" class="blog-card-image"
+    src="{{ .Params.image | relURL }}" />
+  {{ else }}
+  <img id="thumb" alt="{{.Title}}" class="blog-card-image"
+    src='{{ "/images/noimage.jpg" | relURL }}'>
+  {{ end }}
+  <div class="blog-card-content">
+    <h3 class="blog-card-title">{{ .Title }}</h3>
+    <p class="blog-card-summary">{{ substr .Summary 0 130 | plainify | htmlUnescape }}...</p>
+    {{/* Moved the date and taxonomies into one block */}}
+    <ul class="blog-card-meta-list">
+      <li class="blog-card-meta-item">
+        <i class="fa-regular fa-calendar blog-card-meta-icon"></i>
+        <time class="blog-card-date">{{ .Date.Format "2006/01/02" }}</time>
+      </li>
+      {{ $verticals:= .Params.verticals }}
+      {{ $categories:= .Params.categories }}
+      {{ $tags:= .Params.tags }}
+      {{ if or $verticals $categories $tags }}
+
+        {{ with $verticals }}
+          <li class="blog-card-meta-item">
+            <i class="fa-regular fa-rectangle-list blog-card-meta-icon"></i>
+            {{ range $i, $vertical := . }}
+              <a href="{{ `verticals/` | relLangURL }}{{ . | urlize | lower }}/" class="blog-card-meta-link">
+                {{ . | humanize }}{{ if ne $i (sub (len $verticals) 1) }},{{ end }}
+              </a>
+            {{ end }}
+          </li>
+        {{ end }}
+
+        {{ with $categories }}
+          <li class="blog-card-meta-item">
+            <i class="fa-regular fa-folder blog-card-meta-icon"></i>
+            {{ range $i, $category := . }}
+              <a href="{{ `categories/` | relLangURL }}{{ . | urlize | lower }}/" class="blog-card-meta-link">
+                {{ . | humanize }}{{ if ne $i (sub (len $categories) 1) }},{{ end }}
+              </a>
+            {{ end }}
+          </li>
+        {{ end }}
+
+        {{ with $tags }}
+          <li class="blog-card-meta-item">
+            <i class="fa-regular fa-bookmark blog-card-meta-icon"></i>
+            {{ range $i, $tag := . }}
+              <a href="{{ `tags/` | relLangURL }}{{ . | urlize | lower }}/" class="blog-card-meta-link">
+                {{ . | humanize }}{{ if ne $i (sub (len $tags) 1) }},{{ end }}
+              </a>
+            {{ end }}
+          </li>
+        {{ end }}
+      {{ end }}    
+    </ul>
+  </div>
+</div>

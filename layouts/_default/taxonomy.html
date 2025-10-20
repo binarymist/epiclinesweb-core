@@ -1,0 +1,96 @@
+{{ define "main" }}
+<section class="section taxonomy-term">
+  <div class="container">
+    <h1>{{ .Title }}</h1>
+    <!--debug-->
+    {{/*<div>{{ printf ".Data.Terms %s" .Data.Terms }}</div>
+    <div>{{ printf ".RelPermalink %s" .RelPermalink }}</div>*/}}
+    <!--end debug-->
+    {{ $rel := trim .RelPermalink "/" }}
+    <!--debug-->
+    {{/*<div>{{ printf "Trimmed .RelPermalink %s" $rel }}</div>*/}}
+    <!--end debug-->
+
+    {{ $noSiteParamsSection := strings.TrimPrefix (printf "%s/" $.Site.Params.section) $rel }}
+    <!--debug-->
+    {{/*<div>{{ printf "noSiteParamsSection %s" $noSiteParamsSection }}</div>*/}}
+    <!--end debug-->
+    {{ $parts := split $noSiteParamsSection "/" }}
+    <!--debug-->
+    {{/*{{ printf "parts %s" $parts }}*/}}
+    <!--end debug-->
+    {{ $taxonomyPlural := printf "%s/%s" (index $parts 0) (index $parts 1) }}
+    {{ $taxonomyTerm := printf "%s" (index $parts 2) }}
+    <!--debug-->
+    {{/*<div>{{ printf "taxonomyPlural: %s, taxonomyTerm %s" $taxonomyPlural $taxonomyTerm }}</div>*/}}
+    <!--end debug-->
+    {{ if or (not $taxonomyPlural) (not $taxonomyTerm) }}
+      <p>No taxonomy context.</p>
+    {{ else }}
+      {{ $base := index $parts 0 }}
+      {{ $prop := index $parts 2 }}
+      
+      <!--degug-->
+      {{/*<div>{{ printf "base: %s" $base }}</div>
+      <div>{{ printf "prop: %s" $prop }}</div>*/}}
+      <!--end debug-->      
+      {{ $prefix := replace $base "-" "_" }} <!--not sure why this is needed?-->
+      {{ $key := print $prefix "_" $prop }} <!--key should be deck-grip/colours-->
+      <!--degug-->
+      {{/*<div>{{ printf "prefix: %s" $prefix }}</div>
+      <div>{{ printf "key: ([prefix]_[prop]): %s" $key }}</div>
+      <ul>
+        {{ range $k, $v := site.Taxonomies }}
+          <li>>>>{{ $k }}: {{ $v }}</li>
+        {{ end }}
+      </ul>*/}}
+      <!--end debug-->
+      {{ $taxonomyMap := index site.Taxonomies $taxonomyPlural }}
+      <!--degug-->
+      {{/*<div>{{ printf "taxonomyMap: %s" $taxonomyMap }}</div>*/}}
+      <!--end debug-->
+      <!--Default taxonomies: Taxonomies with no specific (categories, tags) template, and not product specific-->
+      {{ if not $taxonomyMap }}
+        <ul>
+          {{ range .Pages }}
+            <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+          {{ end }}
+        </ul>
+      <!--End: Default taxonomies: Taxonomies with no specific (categories, tags) template, and not product specific-->
+      {{ else }}
+        <!-- This caters for terms with spaces instead of hyphens -->
+        {{ $normalizedTaxonomyMap := dict }}
+        {{ range $taxonomyMapKey, $taxonomyMapVal := $taxonomyMap }}
+          {{ $normalizedTaxonomyKey := (replace $taxonomyMapKey " " "-") }}
+          {{ $normalizedTaxonomyMap = merge $normalizedTaxonomyMap (dict $normalizedTaxonomyKey $taxonomyMapVal) }}
+        {{ end }}
+
+        {{ $termPages := index $normalizedTaxonomyMap $taxonomyTerm }}
+        <!-- End: This caters for terms with spaces instead of hyphens -->
+        <!--degug-->
+        {{/*<div>{{ printf "termPages: %s" $termPages }}</div>*/}}
+        <!--end debug-->      
+        {{ if not $termPages }}
+          <p>"{{ .Title }}" is a taxonomy, not a term, therefore no products found for it.</p>
+        {{ else }}
+          <div class="row">
+            {{ $sectionPrefix := print "products/" $base "/" }}<!--sectionPrefix is products/deck-grip/colours/-->
+            {{ range $p := $termPages }}<!--p is WeightedPage(0,"deckgrip 1")-->
+              <!--degug-->
+              {{/*<div>{{ printf "--p: %s--" $p }}</div></br></br>
+              <div>{{ printf "--p.File: %s--" $p.File }}</div>
+              <div>{{ printf "--p.File.Dir: %s--" $p.File.Dir }}</div>*/}}
+              <!--end debug-->      
+              {{ if strings.HasPrefix $p.File.Dir $sectionPrefix }}
+                <div class="col-md-4 mb-4">
+                  {{ partial "product-card.html" $p }}<!--p would be http://localhost:1314/surf/products/deck-grip/deckgrip1/-->
+                </div>
+              {{ end }}
+            {{ end }}
+          </div>
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  </div>
+</section>
+{{ end }}

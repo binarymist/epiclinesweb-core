@@ -1,0 +1,43 @@
+
+###################################### Navigation english ######################################
+
+[[main]]
+identifier = "about"
+name = "About"
+url = "http://localhost:1313/about/"
+weight = 1
+
+[[main]]
+identifier = "contact"
+name = "Contact"
+url = "http://localhost:1313/contact/"
+weight = 2
+
+[[main]]
+identifier = "blog"
+name = "Blog"
+url = "http://localhost:1313/blog/"
+weight = 3
+
+
+
+
+
+
+
+# footer menu
+[[footer]]
+name = "About"
+url = "http://localhost:1313/about/"
+weight = 1
+
+[[footer]]
+name = "Contact"
+url = "http://localhost:1313/contact/"
+weight = 2
+
+[[footer]]
+name = "Blog"
+url = "http://localhost:1313/blog/"
+weight = 3
+

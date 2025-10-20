@@ -1,0 +1,26 @@
+<!-- categories -->
+{{ if isset site.Taxonomies "verticals" }}
+  {{ if not (eq (len site.Taxonomies.verticals) 0) }}
+    <div class="mb-8">
+      <h5 class="mb-8 flex items-center space-x-2">
+        <i class="fa-regular fa-rectangle-list"></i>
+        <span>Verticals</span>
+      </h5>
+      <div class="bg-light dark:bg-darkmode-light rounded p-8">
+        <ul class="space-y-4">
+          {{ range $name, $items := site.Taxonomies.verticals }}
+            <li>
+              <a
+                class="hover:text-primary dark:hover:text-darkmode-primary {{ if (and (eq $.Page.Kind `term`) (eq $.Page.Type `verticals`) (eq $.Page.Title .Page.Title)) }}
+                  active
+                {{ end }} flex justify-between"
+                href="{{ .Page.RelPermalink }}">
+                {{ .Page.Title }} <span>( {{ len $items }} )</span>
+              </a>
+            </li>
+          {{ end }}
+        </ul>
+      </div>
+    </div>
+  {{ end }}
+{{ end }}

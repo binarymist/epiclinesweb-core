@@ -1,31 +1,87 @@
-
-baseURL = "https://epiclines.nz/"
+################################### Default Configuration ############################
+baseurl = "https://epiclines.nz/"
 title = "EpicLines"
-languageCode = "en-nz"
+theme = "vex-hugo"
+# post excert
+summarylength = "20"
+# google analytics
+googleAnalytics = "" # Ex: UA-123-45
+languageCode = 'en-nz'
+# disable language
+disableLanguages = [] # disable language from here
+
+[pagination]
+  pagerSize = 5
+
+# unsafe html
+[markup.goldmark.renderer]
+unsafe = true
+
+[permalinks]
+  blog = "/blog/:year/:month/:day/:slug"
+
+#################################### Plugins ##########################################
+
+# CSS Plugins
+[[params.plugins.css]]
+link = "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+[[params.plugins.css]]
+link = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+[[params.plugins.css]]
+link = "plugins/bootstrap/bootstrap.min.css"
+[[params.plugins.css]]
+link = "plugins/themefisher-font/themefisher-font.min.css"
+[[params.plugins.css]]
+link = "plugins/slick/slick.min.css"
+
+# JS Plugins
+[[params.plugins.js]]
+link = "plugins/jquery/jquery.js"
+[[params.plugins.js]]
+link = "plugins/bootstrap/bootstrap.min.js"
+[[params.plugins.js]]
+link = "plugins/custom/dropdown-hover.js"
+[[params.plugins.js]]
+link = "plugins/slick/slick.min.js"
 
 
+########################### Default parameters ##########################
 [params]
-  description = "EpicLines core site"
-  surfURL = "https://epiclines.nz/surf/"
-  motorhomeURL = "https://epiclines.nz/motorhome/"
+logo = "images/logo.png"
+logo_width = "100px"
+# Meta data
+description = "EpicLines"
+author = "BinaryMist Limited"
+copyright = '&copy; 2025 BinaryMist Limited'
+# currency
+currency = "$"
+# contact form action
+contact_form_action = "#" # contact form works with https://formspree.io
+
+surfURL = "https://epiclines.nz/surf/"
+coreURL = "https://epiclines.nz/"
+motorhomeURL = "https://epiclines.nz/motorhome/"
+
+section = "core"
 
 
-[menu]
-  [[menu.main]]
-    name = "Home"
-    url = "/"
-  [[menu.main]]
-    name = "Surf"
-    url = "https://epiclines.nz/surf/"
-  [[menu.main]]
-    name = "Motorhomes"
-    url = "https://epiclines.nz/motorhome/"
-  [[menu.main]]
-    name = "Blog"
-    url = "/blog/"
-  [[menu.main]]
-    name = "About"
-    url = "/about/"
-  [[menu.main]]
-    name = "Contact"
-    url = "/contact/"
+# Preloader
+[params.preloader]
+enable = true
+preloader = "" # use .png , .svg or .gif format
+
+# Subscription
+[params.subscription]
+# mailchimp subsciption
+mailchimp_form_action = "https://gmail.us4.list-manage.com/subscribe/post?u=463ee871f45d2d93748e77cad&amp;id=a0a2c6d074" # replace this url with yours
+mailchimp_form_name = "b_463ee871f45d2d93748e77cad_a0a2c6d074"                                                           # replace this code with yours
+
+[taxonomies]
+category = "categories"
+tag = "tags"
+vertical = "verticals"
+
+
+######################## blog sidebar widgets #########################
+[params.widgets]
+sidebar = ["verticals", "categories", "tags"]
