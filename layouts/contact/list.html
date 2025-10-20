@@ -31,7 +31,10 @@
     <div class="row justify-content-center">
       <div class="col-lg-8">
         <h2 class="font-weight-bold mb-4">{{ .Title | markdownify }}</h2>
-        <form action="{{ site.Params.contact_form_action }}" method="POST" class="row">
+
+        <form name="contact" class="el-contact row" action="" method="POST">
+          <div class="form-action-value" hidden>{{ site.Params.contact_form_action }}</div>
+
           <div class="col-lg-6 mb-3">
             <input type="text" class="form-control mb-2" id="name" name="name" placeholder="Your Name">
           </div>
@@ -41,10 +44,26 @@
           <div class="col-12 mb-3">
             <textarea name="message" id="message" class="form-control mb-2" placeholder="Your Message"></textarea>
           </div>
-          <div class="col-12 text-right">
+
+          <div class="col-lg-12 mb-3">
+            <span class="el-post-contact-field span">Help fight spam. Enter the correct answer in the next field *</span>
+          </div>
+          <div class="col-lg-12 mb-3">
+            <span class="el-post-contact-field js-note span">JavaScript must be enabled to see question.</span>
+          </div>
+
+          <div class="col-lg-6 mb-3">
+            <input type="text" name="validateRealContactUser" class="form-control mb-2 el-post-contact-field" required/>
+          </div>
+          <div class="d-none">
+            <label>Do not fill this field unless you are a bot: <input name="welcome-bot"></label>
+          </div>
+
+          <div class="col-lg-6 mb-3 text-right">
             <button type="submit" value="send" class="btn btn-main btn-main-sm">Send Now</button>
           </div>
         </form>
+
       </div>
     </div>
   </div>

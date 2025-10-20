@@ -40,7 +40,7 @@ link = "plugins/jquery/jquery.js"
 [[params.plugins.js]]
 link = "plugins/bootstrap/bootstrap.min.js"
 [[params.plugins.js]]
-link = "plugins/custom/dropdown-hover.js"
+link = "plugins/custom/el-custom.js"
 [[params.plugins.js]]
 link = "plugins/slick/slick.min.js"
 
@@ -56,7 +56,7 @@ copyright = '&copy; 2025 BinaryMist Limited'
 # currency
 currency = "$"
 # contact form action
-contact_form_action = "#" # contact form works with https://formspree.io
+contact_form_action = "https://formspree.io/f/xzzjwwaq"
 
 surfURL = "https://epiclines.nz/surf/"
 coreURL = "https://epiclines.nz/"
