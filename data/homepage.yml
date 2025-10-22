@@ -5,11 +5,11 @@ verticals:
   options: 
     - title: "motorhome"
       label: "Motorhomes"
-      description: "Motorhomes For The Decerning"
+      description: "Motorhomes For The Discerning"
       link: "motorhomeURL"
       icon: "icons/motorhome.png"
     - title: "surf"
       label: "Surf"
-      description: "New Zealands Own Surf Accessories"
+      description: "New Zealand's Own Surf Accessories"
       link: "surfURL"
       icon: "icons/surf.png"
