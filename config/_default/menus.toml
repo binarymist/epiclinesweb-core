@@ -4,19 +4,19 @@
 [[main]]
 identifier = "about"
 name = "About"
-url = "https://epiclines.nz/about/"
+url = "https://www.epiclines.nz/about/"
 weight = 1
 
 [[main]]
 identifier = "contact"
 name = "Contact"
-url = "https://epiclines.nz/contact/"
+url = "https://www.epiclines.nz/contact/"
 weight = 2
 
 [[main]]
 identifier = "blog"
 name = "Blog"
-url = "https://epiclines.nz/blog/"
+url = "https://www.epiclines.nz/blog/"
 weight = 3
 
 
@@ -28,16 +28,16 @@ weight = 3
 # footer menu
 [[footer]]
 name = "About"
-url = "https://epiclines.nz/about/"
+url = "https://www.epiclines.nz/about/"
 weight = 1
 
 [[footer]]
 name = "Contact"
-url = "https://epiclines.nz/contact/"
+url = "https://www.epiclines.nz/contact/"
 weight = 2
 
 [[footer]]
 name = "Blog"
-url = "https://epiclines.nz/blog/"
+url = "https://www.epiclines.nz/blog/"
 weight = 3
 
