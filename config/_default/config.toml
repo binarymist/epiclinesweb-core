@@ -1,5 +1,5 @@
 ################################### Default Configuration ############################
-baseurl = "https://epiclines.nz/"
+baseurl = "https://www.epiclines.nz/"
 title = "EpicLines"
 theme = "vex-hugo"
 # post excert
@@ -58,9 +58,9 @@ currency = "$"
 # contact form action
 contact_form_action = "https://formspree.io/f/xzzjwwaq"
 
-surfURL = "https://epiclines.nz/surf/"
-coreURL = "https://epiclines.nz/"
-motorhomeURL = "https://epiclines.nz/motorhome/"
+surfURL = "https://www.epiclines.nz/surf/"
+coreURL = "https://www.epiclines.nz/"
+motorhomeURL = "https://www.epiclines.nz/motorhome/"
 
 section = "core"
 
