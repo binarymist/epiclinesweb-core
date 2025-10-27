@@ -1,0 +1,23 @@
+customHeaders:
+  - pattern: "**/*.woff2"
+    headers:
+      - key: "Access-Control-Allow-Origin"
+        value: "https://main.d367r5fsm49ce9.amplifyapp.com"
+  - pattern: "**/*.woff"
+    headers:
+      - key: "Access-Control-Allow-Origin"
+        value: "https://main.d367r5fsm49ce9.amplifyapp.com"
+  - pattern: "**/*.ttf"
+    headers:
+      - key: "Access-Control-Allow-Origin"
+        value: "https://main.d367r5fsm49ce9.amplifyapp.com"
+  - pattern: "**/*.eot"
+    headers:
+      - key: "Access-Control-Allow-Origin"
+        value: "https://main.d367r5fsm49ce9.amplifyapp.com"
+
+  - pattern: "*"
+    headers:
+      - key: 'Cache-Control'
+        value: 'no-store, no-cache, max-age=0, must-revalidate'
+
