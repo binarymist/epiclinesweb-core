@@ -9,6 +9,7 @@ googleAnalytics = "" # Ex: UA-123-45
 languageCode = 'en-nz'
 # disable language
 disableLanguages = [] # disable language from here
+timeZone = "Pacific/Auckland"
 
 [pagination]
   pagerSize = 5
