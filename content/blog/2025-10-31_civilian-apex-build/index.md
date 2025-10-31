@@ -1,6 +1,6 @@
 ---
 title: "Civilian Apex Build"
-meta_title: ""
+meta_title: "EpicLines Civilian Apex Build"
 description: "this is meta description"
 date: 2025-10-31T12:00:00+13:00
 image: "/images/blog/2025/main_min.jpg"
