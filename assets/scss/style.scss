@@ -467,6 +467,17 @@ header.sticky-top {
   font-family: 'Conthrax SB', sans-serif;
   font-weight: 600;
 }
+.footer-menu.list-inline .list-inline-item .social {
+  font-size: 1.6rem;
+  margin-bottom: 1.2rem;
+}
+.footer-menu.list-inline .list-inline-item .logo {
+  margin-bottom: 1.2rem !important;
+  padding: 0px 20px 0px 20px;
+}
+.footer-menu.list-inline .list-inline-item a.logo {
+  width: 140px;
+}
 
 footer {
   text-align: center;
