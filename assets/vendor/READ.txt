@@ -1,0 +1,17 @@
+The following files in here were copied from themes/vex-hugo/static/plugins/.
+
+bootstrap/
+jquery/
+slick/
+themefisher-font/
+
+This is so that we can fingerprint them to cache bust.
+
+The themefisher-font/themefisher-font.min.css file needed a leading slash in 5 places in order to find it's nested fonts. I also removed the redundant query strings.
+
+I moved the themefisher-fonts into static/fonts/ as this is the only place that works.
+
+
+
+
+

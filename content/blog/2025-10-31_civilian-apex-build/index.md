@@ -348,7 +348,7 @@ Then tanked with 3 coats of marine epoxy.
 The base is then coated with another 3 coats of epoxy brushing polyurethane, making the room completely waterproof.
 
 {{< figure
-  src="/images/blog/2025/wetroom-sealed-tanked-polyurethaned.jpg"
+  src="/images/blog/2025/wetroom-sealed-tanked-polyurethaned_min.jpg"
   alt="Wetroom Sealed Tanked Polyurethaned"
   caption=""
   class="ma0 w-75"

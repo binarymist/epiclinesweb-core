@@ -52,11 +52,21 @@
 {{ end }}
 {{ end }}
 
-<!-- JS Plugins -->
-{{ range site.Params.plugins.js}}
-<script src="{{ .link | absURL }}"></script>
+<!-- Vendor Scripts -->
+{{ "" | safeHTML }}
+{{ $vendor_scripts := slice }}
+{{ range site.Params.vendor.js }}
+  {{ with resources.Get .link }}
+    {{ $vendor_scripts = $vendor_scripts | append . }}
+  {{ end }}
 {{ end }}
 
-<!-- Main Script -->
-{{ $script := resources.Get "js/script.js" }}
+{{ $final_vendor_scripts := $vendor_scripts | resources.Concat "js/vendor_bundle.js" | fingerprint }}
+<script src="{{ $final_vendor_scripts.Permalink }}" integrity="{{ $final_vendor_scripts.Data.Integrity }}"></script>
+
+{{ $custom := resources.Get "js/el-custom.js" | minify | fingerprint }}
+<script src="{{ $custom.Permalink }}"></script>
+
+<!-- Main Script from theme -->
+{{ $script := resources.Get "js/script.js" | minify | fingerprint }}
 <script src="{{ $script.Permalink }}"></script>

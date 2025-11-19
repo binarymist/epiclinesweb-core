@@ -1,0 +1,62 @@
+<head>
+  <meta charset="utf-8">
+  <title>{{ .Title }}</title>
+
+  {{ "<!-- mobile responsive meta -->" | safeHTML }}
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with site.Params.description }}{{ . }}{{ end }}{{ end }}">
+  {{ with site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+  {{ hugo.Generator }}
+  
+  <!-- theme meta -->
+  <meta name="theme-name" content="vex-hugo" />
+
+  {{ "<!-- plugins -->" | safeHTML }}
+  {{ range site.Params.plugins.css }}
+  <link rel="stylesheet" href="{{ .link | absURL }} ">
+  {{ end }}
+
+
+
+
+
+
+
+
+
+
+{{ "<!-- Vendor Styles -->" | safeHTML }}
+{{ $vendor_styles := slice }}
+{{ range site.Params.vendor.css }}
+  {{ with resources.Get .link }}
+    {{ $vendor_styles = $vendor_styles | append . }}
+  {{ end }}
+{{ end }}
+{{ $final_vendor_styles := $vendor_styles | resources.Concat "css/vendor_bundle.css" | fingerprint }}
+<link rel="stylesheet" 
+      href="{{ $final_vendor_styles.Permalink }}" 
+      integrity="{{ $final_vendor_styles.Data.Integrity }}" 
+      media="screen">
+
+
+
+
+
+
+
+  {{ "<!-- Main Stylesheet -->" | safeHTML }}
+  {{ $styles := resources.Get "scss/style.scss" | toCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $styles.Permalink }}" media="screen">
+ 
+
+  {{ "<!--Favicon-->" | safeHTML }}
+  <link rel="shortcut icon" href="{{ `images/favicon.png` | absURL }} " type="image/x-icon">
+  <link rel="icon" href="{{ `images/favicon.png` | absURL }} " type="image/x-icon">
+
+  {{ with .Params.image }}
+  <meta property="og:image" content="{{ . | absURL }}" />
+  {{ end }}
+  {{ template "_internal/opengraph.html" . }}
+  {{ template "_internal/google_analytics.html" . }}
+
+</head>
