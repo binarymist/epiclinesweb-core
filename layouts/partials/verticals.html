@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 {{ $data := .Site.Data }}
 
 {{ with $data.homepage.verticals }}
@@ -22,7 +15,14 @@
                 <div class="content">
                   {{if .icon }}
                   <span class="icon {{ .icon }}"></span>
-                  <img class="icon" src="{{ .icon | safeURL }}" alt="{{ .label }} Icon" />
+                  {{/*<img class="icon" src="{{ .icon | safeURL }}" alt="{{ .label }} Icon" />*/}}
+                  {{/* partial "image-fingerprint.html" (dict "src" (.icon | safeURL) "alt" (printf "%s Icon" .label) "class" "icon") */}}
+                  {{ partial "image-fingerprint.html" (dict 
+                    "src" (.icon | safeURL) 
+                    "alt" (printf "%s Icon" .label) 
+                    "class" "icon"
+                    "width" .iconWidth
+                  )}}
                   {{ end }}
                   <h2 class="label">{{ .label }}</h2>
                   <p class="sans">{{ .description | markdownify }}</p>

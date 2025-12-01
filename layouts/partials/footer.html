@@ -13,7 +13,12 @@
               <li class="list-inline-item">
                 <a href="{{ site.BaseURL | relLangURL }}" class="mb-4 d-inline-block logo">
                   {{ if site.Params.logo }}
-                  {{ partial "image.html" (dict "Src" .Site.Params.logo "Alt" .Site.Title "Class" "img-fluid") }}
+                  {{ partial "image-fingerprint.html" (dict 
+                    "src" (site.Params.logo) 
+                    "alt" site.Title
+                    "class" "img-fluid img"
+                    "width" site.Params.logo_width
+                  )}}
                   {{ else }} {{ .Title }} {{ end }}
                 </a>
               </li>

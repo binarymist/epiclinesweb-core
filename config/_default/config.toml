@@ -48,6 +48,7 @@ link = "vendor/slick/slick.min.js"
 [params]
 logo = "images/logo.png"
 logo_width = "100px"
+logo_height = "30px"
 # Meta data
 description = "EpicLines"
 author = "BinaryMist Limited"
@@ -84,3 +85,4 @@ vertical = "verticals"
 ######################## blog sidebar widgets #########################
 [params.widgets]
 sidebar = ["verticals", "categories", "tags"]
+

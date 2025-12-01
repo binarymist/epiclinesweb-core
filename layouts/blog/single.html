@@ -7,7 +7,8 @@
           {{ if $image }}
             <div class="mb-10 post-image-wrapper">
               {{/* Use the .RelPermalink method to get the image path */}}
-              <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" class="post-image" loading="lazy">
+              {{ partial "image-fingerprint.html" (dict "src" (.Params.image | relURL) "alt" .Title "class" "post-image") }}
+
             </div>
           {{ end }}
           <h1 class="h2 mb-4">

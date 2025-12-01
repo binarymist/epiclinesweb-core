@@ -7,9 +7,11 @@ verticals:
       label: "Motorhomes"
       description: "Motorhomes For The Discerning"
       link: "motorhomeURL"
-      icon: "../icons/motorhome.png"
+      icon: "/icons/motorhome.png"
+      iconWidth: 113.75
     - title: "surf"
       label: "Surf"
-      description: "New Zealand's Own Surf Accessories"
+      description: "New Zealand's Own Surf Gear"
       link: "surfURL"
-      icon: "../icons/surf.png"
+      icon: "/icons/surf.png"
+      iconWidth: 308.49

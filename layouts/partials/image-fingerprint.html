@@ -1,0 +1,38 @@
+{{/* This works, but no optional return_resource_only */}}
+
+{{ $alt := .alt | default "" }}
+{{ $class := .class }}
+{{ $rawSrc := .src }}
+
+{{ $id := .id }}
+
+{{ $inputPath := $rawSrc | strings.TrimPrefix "/" }}
+
+{{ with resources.Get $inputPath }} 
+    
+    {{ $fingerprintedImage := . | fingerprint }}
+
+    {{/* width and height are optional parameters */}}
+    {{/* Define final width and height, prioritizing passed values ($.width) 
+         over the asset's default (.Width) and using $. to access the dict.
+    */}}
+    {{ $w := $.width | default .Width }} 
+    {{ $h := $.height | default .Height }}
+
+    <img src="{{ $fingerprintedImage.RelPermalink }}" 
+         alt="{{ $alt }}"
+         width="{{ $w }}" 
+         height="{{ $h }}"
+         {{/* class is optional parameter */}}
+         {{ if $class }}class="{{ $class }}"{{ end }}
+         {{/* id is optional parameter */}}
+         {{ if $id }}id="{{ $id }}"{{ end }}
+         loading="lazy">
+
+{{ else }}
+    {{/* Fallback for missing file */}}
+    <p style="color: red; font-weight: bold;">❌ FINGERPRINTING FAILED: Asset not found at <code>{{ $inputPath }}</code>. Please ensure the file is in your <code>/assets</code> folder.</p>
+    <img src="{{ $rawSrc }}" alt="{{ $alt }}">
+{{ end }}
+
+{{/* End This works, but no optional return_resource_only */}}

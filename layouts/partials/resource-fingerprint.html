@@ -1,0 +1,16 @@
+{{ $resourcePath := resources.Get . -}}
+
+{{/* warnf "1 🟢 $resourcePath: %+v" $resourcePath }}
+{{ warnf "2 🟢 . type: %T" . */}}
+    
+{{ $fingerprintedImage := $resourcePath | fingerprint }}
+
+{{/* warnf "3 🟢 $fingerprintedImage value: %+v" $fingerprintedImage }}
+{{ warnf "4 🟢 $fingerprintedImage type: %T" $fingerprintedImage }}
+{{ warnf "5 🟢 $fingerprintedImage.RelPermalink: %+v" $fingerprintedImage.RelPermalink }}
+{{ warnf "6 🟢 $fingerprintedImage.RelPermalink: %T" $fingerprintedImage.RelPermalink */}}
+
+{{- return resources.Copy $fingerprintedImage.RelPermalink (resources.Get $resourcePath) -}}
+
+{{/* https://seirdy.one/notes/2024/03/28/short-cache-busting-fingerprints-in-hugo/ */}}
+

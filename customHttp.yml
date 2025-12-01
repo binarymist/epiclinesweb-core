@@ -1,40 +1,33 @@
 customHeaders:
-
+  # HTML Caching (Ensures freshness and long CDN cache)
   - pattern: "/**/*.html"
     headers:
       - key: "Cache-Control"
-        # max-age=0 forces browser to check for new version (freshness). 
-        # s-maxage=1 Year forces CDN to cache aggressively (speed).
         value: "public, max-age=0, must-revalidate, s-maxage=31536005"
-      - key: 'X-Custom-Test'
-        value: 'Gemini-Debug-Passsss'
 
-  # 3. FONT CACHING (Non-Fingerprinted Assets)
-  # These files are served from /static and must use a short max-age for updates.
   # Includes the necessary CORS header for cross-origin font loading.
   - pattern: "**/*.woff2"
     headers:
       - key: "Access-Control-Allow-Origin"
         value: "https://main.d367r5fsm49ce9.amplifyapp.com"
+        # defining Cache-control values are not honored by amplilfy.
   - pattern: "**/*.woff"
     headers:
       - key: "Access-Control-Allow-Origin"
         value: "https://main.d367r5fsm49ce9.amplifyapp.com"
-      - key: "Cache-Control"
-        value: "public, max-age=600, s-maxage=31536002"
+        # defining Cache-control values are not honored by amplilfy.
   - pattern: "**/*.ttf"
     headers:
       - key: "Access-Control-Allow-Origin"
         value: "https://main.d367r5fsm49ce9.amplifyapp.com"
+        # defining Cache-control values are not honored by amplilfy.
   - pattern: "**/*.eot"
     headers:
       - key: "Access-Control-Allow-Origin"
         value: "https://main.d367r5fsm49ce9.amplifyapp.com"
-      - key: "Cache-Control"
-        value: "public, max-age=600, s-maxage=31536002"
+        # defining Cache-control values are not honored by amplilfy.
   - pattern: "**/*.svg" # Includes font SVG files
     headers:
       - key: "Access-Control-Allow-Origin"
         value: "https://main.d367r5fsm49ce9.amplifyapp.com"
-      - key: "Cache-Control"
-        value: "public, max-age=600, s-maxage=31536002"
+        # defining Cache-control values are not honored by amplilfy.

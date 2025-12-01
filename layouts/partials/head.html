@@ -50,8 +50,11 @@
  
 
   {{ "<!--Favicon-->" | safeHTML }}
-  <link rel="shortcut icon" href="{{ `images/favicon.png` | absURL }} " type="image/x-icon">
-  <link rel="icon" href="{{ `images/favicon.png` | absURL }} " type="image/x-icon">
+  {{ $icon_png := partialCached "resource-fingerprint.html" ("/images/favicon.png" | relURL) }}
+  <link rel="shortcut icon" href="{{ $icon_png.Permalink }} " type="image/x-icon">
+  <link rel="icon" href="{{ $icon_png.Permalink }} " type="image/x-icon">
+
+
 
   {{ with .Params.image }}
   <meta property="og:image" content="{{ . | absURL }}" />

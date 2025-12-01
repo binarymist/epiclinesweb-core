@@ -9,11 +9,18 @@
   <div class="navbar-wrapper {{ .Site.Params.section }}">
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-dark {{ .Site.Params.section }}">
-
-
-
-
-      <a class="navbar-brand" href="{{ site.BaseURL | relLangURL }}">{{ if site.Params.logo }} <img src="{{ site.Params.logo | absURL }}" alt="{{ site.Title }}" {{with site.Params.logo_width}}width="{{.}}"{{end}}> {{ else }} {{ site.Title }} {{ end }}</a>
+      <a class="navbar-brand" href="{{ site.BaseURL | relLangURL }}">
+          {{ if site.Params.logo }}
+            {{ partial "image-fingerprint.html" (dict 
+                  "src" (site.Params.logo) 
+                  "alt" site.Title 
+                  "width" site.Params.logo_width
+                  "height" site.Params.logo_height
+              )}}
+          {{ else }}
+              {{ site.Title }}
+          {{ end }}
+      </a>
       <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
         aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

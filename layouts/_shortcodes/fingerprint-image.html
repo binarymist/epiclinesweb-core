@@ -1,0 +1,25 @@
+{{/* Get required parameters */}}
+{{ $src := .Get "src" }}
+{{ $alt := .Get "alt" }}
+{{ $class := .Get "class" }}
+
+{{/* Start building the dictionary */}}
+{{ $partialDict := dict 
+    "src" $src 
+    "alt" $alt 
+    "class" $class 
+}}
+
+{{/* Check for optional parameters and merge them if they exist */}}
+{{ with .Get "width" }}
+    {{ $partialDict = merge $partialDict (dict "width" .) }}
+{{ end }}
+{{ with .Get "height" }}
+    {{ $partialDict = merge $partialDict (dict "height" .) }}
+{{ end }}
+{{ with .Get "id" }}
+    {{ $partialDict = merge $partialDict (dict "id" .) }}
+{{ end }}
+
+{{/* Call the partial with the final dictionary */}}
+{{ partial "image-fingerprint.html" $partialDict }}

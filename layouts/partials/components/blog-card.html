@@ -2,11 +2,9 @@
   class="clickable-card-container blog-card">
     <a href="{{ .Permalink }}" class="stretched-link"></a>
   {{ if .Params.image }}
-  <img id="thumb" alt="{{.Title}}" class="blog-card-image"
-    src="{{ .Params.image | relURL }}" />
+    {{ partial "image-fingerprint.html" (dict "id" "thumb" "src" (.Params.image | relURL) "alt" .Title "class" "blog-card-image") }}
   {{ else }}
-  <img id="thumb" alt="{{.Title}}" class="blog-card-image"
-    src='{{ "/images/noimage.jpg" | relURL }}'>
+    {{ partial "image-fingerprint.html" (dict "id" "thumb" "src" ("/images/noimage.jpg" | relURL) "alt" .Title "class" "blog-card-image") }}
   {{ end }}
   <div class="blog-card-content">
     <h3 class="blog-card-title">{{ .Title }}</h3>
