@@ -16,15 +16,6 @@
   <link rel="stylesheet" href="{{ .link | absURL }} ">
   {{ end }}
 
-
-
-
-
-
-
-
-
-
 {{ "<!-- Vendor Styles -->" | safeHTML }}
 {{ $vendor_styles := slice }}
 {{ range site.Params.vendor.css }}
@@ -38,23 +29,16 @@
       integrity="{{ $final_vendor_styles.Data.Integrity }}" 
       media="screen">
 
-
-
-
-
-
-
   {{ "<!-- Main Stylesheet -->" | safeHTML }}
   {{ $styles := resources.Get "scss/style.scss" | toCSS | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $styles.Permalink }}" media="screen">
- 
 
   {{ "<!--Favicon-->" | safeHTML }}
-  {{ $icon_png := partialCached "resource-fingerprint.html" ("/images/favicon.png" | relURL) }}
-  <link rel="shortcut icon" href="{{ $icon_png.Permalink }} " type="image/x-icon">
-  <link rel="icon" href="{{ $icon_png.Permalink }} " type="image/x-icon">
-
-
+  {{ $resourcePath := resources.Get ("/images/favicon.png" | relURL) }}
+  {{ $fingerprintedImage := $resourcePath | fingerprint }}  
+  {{- $faviconImgResource := resources.Copy $fingerprintedImage.RelPermalink (resources.Get $resourcePath) -}}
+  <link rel="shortcut icon" href="{{ $faviconImgResource.Permalink }} " type="image/x-icon">
+  <link rel="icon" href="{{ $faviconImgResource.Permalink }} " type="image/x-icon">
 
   {{ with .Params.image }}
   <meta property="og:image" content="{{ . | absURL }}" />
