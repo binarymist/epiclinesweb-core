@@ -1,10 +1,53 @@
 customHeaders:
   # HTML Caching (Ensures freshness and long CDN cache)
-  - pattern: "/**/*.html"
+  # Cache-control headers for core, motorhome, and surf must be defined in core because of the custom domain
+  - pattern: "**/*.html"
     headers:
       - key: "Cache-Control"
-        value: "public, max-age=0, must-revalidate, s-maxage=31536005"
-
+        value: "public, max-age=0, must-revalidate, s-maxage=0"
+  # Styles and JS
+  - pattern: "**/*.css"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=31536000, immutable"
+  - pattern: "**/*.js"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=31536000, immutable"
+  # Fonts
+  - pattern: "**/*.woff2"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=31536000, immutable"
+  - pattern: "**/*.woff"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=31536000, immutable"
+  - pattern: "**/*.ttf"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=31536000, immutable"
+  - pattern: "**/*.eot"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=31536000, immutable"
+  # Images
+  - pattern: "**/*.png"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=31536000, immutable"
+  - pattern: "**/*.jpg"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=31536000, immutable"
+  - pattern: "**/*.jpeg"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=31536000, immutable"
+  - pattern: "**/*.svg"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=31536000, immutable"
   # Includes the necessary CORS header for cross-origin font loading.
   - pattern: "**/*.woff2"
     headers:
