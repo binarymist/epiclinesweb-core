@@ -46,4 +46,21 @@
   {{ template "_internal/opengraph.html" . }}
   {{ template "_internal/google_analytics.html" . }}
 
+  {{ "<!--Required for Google Business-->" | safeHTML }}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "EpicLines",
+    "legalName": "BinaryMist Limited",
+    "url": "https://epiclines.nz",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "27 Woodgrove Ave",
+      "addressLocality": "Christchurch",
+      "addressCountry": "NZ"
+    },
+    "description": "Premium surf merchandise and motorhome conversions."
+  }
+  </script>
 </head>
