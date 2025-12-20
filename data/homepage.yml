@@ -5,13 +5,13 @@ verticals:
   options: 
     - title: "motorhome"
       label: "Motorhomes"
-      description: "Motorhomes For The Discerning"
+      description: "Making Lines For The Discerning"
       link: "motorhomeURL"
       icon: "/icons/motorhome.png"
       iconWidth: 113.75
     - title: "surf"
       label: "Surf"
-      description: "New Zealand's Own Surf Gear"
+      description: "Making Lines For The Lineup"
       link: "surfURL"
       icon: "/icons/surf.png"
       iconWidth: 308.49
