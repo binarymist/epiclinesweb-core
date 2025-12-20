@@ -1,5 +1,4 @@
 customHeaders:
-  # HTML Caching (Ensures freshness and long CDN cache)
   # Cache-control headers for core, motorhome, and surf must be defined in core because of the custom domain
   - pattern: "**/*.html"
     headers:
