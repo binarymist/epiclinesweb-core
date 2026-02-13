@@ -6,7 +6,7 @@ office:
   title : "Central Office"
   mobile : "0274 622 607"
   email : "website@epiclines.nz"
-  location : "27 Woodgrove Ave, North New Brighton, Christchurch, New Zealand"
+  location : "27 Woodgrove Avenue, North New Brighton, Christchurch, 8083, New Zealand"
   content : "For all enquieries email us, or for quicker responses SMS"
 
 # opennig hour

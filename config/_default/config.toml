@@ -52,7 +52,7 @@ logo_height = "30px"
 # Meta data
 description = "EpicLines"
 author = "BinaryMist Limited"
-copyright = '&copy; 2025 EpicLines - A division of BinaryMist Limited'
+copyright = '&copy; 2025-2026 EpicLines - A division of BinaryMist Limited'
 # currency
 currency = "$"
 # contact form action
