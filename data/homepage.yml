@@ -5,7 +5,7 @@ verticals:
   options: 
     - title: "motorhome"
       label: "Motorhomes"
-      description: "Making Lines For The Discerning.."
+      description: "Making Lines For The Discerning"
       link: "motorhomeURL"
       icon: "/icons/motorhome.png"
       iconWidth: 113.75
