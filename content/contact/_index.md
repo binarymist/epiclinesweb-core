@@ -1,6 +1,6 @@
 ---
 title: "Contact"
-description : "this is a meta description"
+description : "EpicLines Contact Details"
 
 office:
   title : "Central Office"

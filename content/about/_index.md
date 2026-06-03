@@ -1,6 +1,6 @@
 ---
 title: "About"
-description: "About us"
+description: "About EpicLines"
 draft: false
 ---
 
